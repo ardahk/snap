@@ -466,27 +466,22 @@ function shuffleCards() {
   }
 }
 
-// initialize app when document is ready
+// Initialize app when document is ready
 document.addEventListener("DOMContentLoaded", () => {
   initializeGames();
   
-  // Add event listeners for filters so the music doesn't keep going when you leave the card
+  // Set up filter event listeners
   document.getElementById("search-input").addEventListener("input", applyFilters);
   document.getElementById("genre-filter").addEventListener("change", applyFilters);
   document.getElementById("price-filter").addEventListener("change", applyFilters);
   document.getElementById("sort-filter").addEventListener("change", applyFilters);
   
-  // Add modal close func
+  // Set up modal close handlers
   const modal = document.getElementById('random-game-modal');
   const closeBtn = document.querySelector('.close-modal');
   
-  closeBtn.onclick = () => {
-    modal.style.display = 'none';
-  };
-  
-  window.onclick = function(event) {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-    }
+  closeBtn.onclick = () => modal.style.display = 'none';
+  window.onclick = (event) => {
+    if (event.target === modal) modal.style.display = 'none';
   };
 });
